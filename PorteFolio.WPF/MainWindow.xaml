@@ -1,0 +1,129 @@
+﻿<Window x:Class="PorteFolio.WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="700" Width="1200" WindowState="Maximized" Background="SteelBlue">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="100*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        
+        
+        <!--<TreeView x:Name="TreeView_Fiches" Grid.Column="1" Grid.Row="1" SelectedItemChanged="TreeView_Fiches_SelectedItemChanged"/>-->
+
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="90*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Column="0" Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50*"/>
+                    <ColumnDefinition Width="01*"/>
+                    <ColumnDefinition Width="50*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50*"/>
+                    <RowDefinition Height="50*"/>
+                </Grid.RowDefinitions>
+                <ComboBox x:Name="ComboBox_Processus" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" SelectionChanged="ComboBox_Processus_SelectionChanged"/>
+                <ComboBox x:Name="ComboBox_Domaines"  Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" SelectionChanged="ComboBox_Domaines_SelectionChanged"/>
+                <ComboBox x:Name="ComboBox_Activites" Grid.Row="1" Grid.ColumnSpan="3" VerticalAlignment="Center" SelectionChanged="ComboBox_Activites_SelectionChanged"/>
+            </Grid>
+            <Grid Grid.Column="0" Grid.Row="2" Background="WhiteSmoke">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30*"/>
+                    <RowDefinition Height="01*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="01*"/>
+                    <RowDefinition Height="30*"/>
+                    <RowDefinition Height="01*"/>
+                    <RowDefinition Height="30*"/>
+                </Grid.RowDefinitions>
+
+                <DataGrid Grid.Column="0" Grid.Row="0" ItemsSource="{Binding ElementName=ComboBox_Activites, Path=SelectedItem.Competences}"/>
+
+                <Grid Grid.Column="0" Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="01*"/>
+                        <ColumnDefinition Width="15*"/>
+                        <ColumnDefinition Width="01*"/>
+                        <ColumnDefinition Width="15*"/>
+                        <ColumnDefinition Width="01*"/>
+                        <ColumnDefinition Width="15*"/>
+                        <ColumnDefinition Width="01*"/>
+                        <ColumnDefinition Width="20*"/>
+                        <ColumnDefinition Width="01*"/>
+                        <ColumnDefinition Width="20*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50*"/>
+                        <RowDefinition Height="01*"/>
+                        <RowDefinition Height="50*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Stretch" TextAlignment="Center" Text="Période (Jours)"/>
+                    <TextBlock Grid.Column="2" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Stretch" TextAlignment="Center" Text="Localisation"/>
+                    <TextBlock Grid.Column="4" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Stretch" TextAlignment="Center" Text="Contexte"/>
+                    <TextBlock Grid.Column="6" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Stretch" TextAlignment="Center" Text="Situation"/>
+                    <TextBlock Grid.Column="8" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Stretch" TextAlignment="Center" Text="Acteurs"/>
+                    <TextBlock Grid.Column="10" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Stretch" TextAlignment="Center" Text="Mission"/>
+                    <TextBox x:Name="TextBox_Periode" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding ElementName=ComboBox_Activites, Path=SelectedItem.Periode, Mode=TwoWay}" />
+
+                    <ComboBox x:Name="ComboBox_Localisation" Grid.Column="2" Grid.Row="2" VerticalAlignment="Center" HorizontalContentAlignment="Center" SelectedItem="{Binding ElementName=ComboBox_Activites, Path=SelectedItem.Localisation, Mode=TwoWay}"/>
+                    <ComboBox x:Name="ComboBox_Contexte"     Grid.Column="4" Grid.Row="2" VerticalAlignment="Center" HorizontalContentAlignment="Center" SelectedItem="{Binding ElementName=ComboBox_Activites, Path=SelectedItem.Contexte, Mode=TwoWay}"/>
+                    <ComboBox x:Name="ComboBox_Situation"    Grid.Column="6" Grid.Row="2" VerticalAlignment="Center" HorizontalContentAlignment="Center" SelectedItem="{Binding ElementName=ComboBox_Activites, Path=SelectedItem.Situation, Mode=TwoWay}"/>
+                    
+                    <TextBox x:Name="TextBox_Acteurs"        Grid.Column="8" Grid.Row="2" VerticalAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding ElementName=ComboBox_Activites, Path=SelectedItem.Acteurs, Mode=TwoWay}" />
+                    
+                    <ComboBox x:Name="ComboBox_Missions"     Grid.Column="10" Grid.Row="2" VerticalAlignment="Center" HorizontalContentAlignment="Center" SelectedItem="{Binding ElementName=ComboBox_Activites, Path=SelectedItem.Mission, Mode=TwoWay}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Nom}"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </Grid>
+
+                <Grid Grid.Column="0" Grid.Row="4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="01*"/>
+                        <ColumnDefinition Width="50*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="01*"/>
+                        <RowDefinition Height="90*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Stretch" TextAlignment="Center" Text="Objectifs et enjeux"/>
+                    <TextBlock Grid.Column="2" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Stretch" TextAlignment="Center" Text="Description de la situation de travail"/>
+
+                    <TextBox x:Name="TextBox_Objectifs"  Grid.Column="0" Grid.Row="2" AcceptsReturn="True" AcceptsTab="True" TextWrapping="WrapWithOverflow" Text="{Binding ElementName=ComboBox_Activites, Path=SelectedItem.Objectifs, Mode=TwoWay}" />
+                    <TextBox x:Name="TextBox_Decription" Grid.Column="4" Grid.Row="2" AcceptsReturn="True" AcceptsTab="True" TextWrapping="WrapWithOverflow" Text="{Binding ElementName=ComboBox_Activites, Path=SelectedItem.Description, Mode=TwoWay}" />
+                </Grid>
+
+                <DataGrid x:Name="DataGrid_Supports" Grid.Column="0" Grid.Row="6" ItemsSource="{Binding ElementName=ComboBox_Activites, Path=SelectedItem.Supports, Mode=TwoWay}" SelectionMode="Single"/>
+                
+            </Grid>
+            
+            
+
+        </Grid>
+    </Grid>
+</Window>
