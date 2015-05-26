@@ -16,7 +16,8 @@ namespace PorteFolio.LIB
 
         [XmlAttribute("Nom")]
         public String Nom { get; set; }
-
+        
+        public String Description { get; set; }
         #endregion
 
         #region Attributs
@@ -25,10 +26,11 @@ namespace PorteFolio.LIB
         public Mission()
         {
         }
-        public Mission( int ID, String Nom)
+        public Mission(int ID, String Nom, String Description)
         {
             this.ID = ID;
             this.Nom = Nom;
+            this.Description = Description;
         }
 
         public override string ToString()

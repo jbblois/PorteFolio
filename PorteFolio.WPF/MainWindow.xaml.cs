@@ -81,5 +81,16 @@ namespace PorteFolio.WPF
         {
             RefreshActivite(ActiviteSelected);
         }
+
+        private void ComboBox_Missions_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Mission missionSelected = (Mission)ComboBox_Missions.SelectedItem;
+            if(missionSelected != null)
+            {
+                String description = missionSelected.Description.Replace('-','\n');
+                MessageBox.Show(description);
+            }
+        }
+
     }
 }

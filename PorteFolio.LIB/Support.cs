@@ -11,6 +11,8 @@ namespace PorteFolio.LIB
     public class Support
     {
         #region Proprietes
+        [XmlAttribute("Chemin")]
+        public String Chemin { get; set; }
 
         [XmlAttribute("Nom")]
         public String Nom { get; set; }
@@ -20,6 +22,9 @@ namespace PorteFolio.LIB
 
         [XmlAttribute("Nature")]
         public ENature Nature { get; set; }
+
+        [XmlAttribute("Description")]
+        public String Description { get; set; }
         #endregion
 
 

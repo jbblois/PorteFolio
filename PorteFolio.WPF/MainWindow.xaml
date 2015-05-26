@@ -55,7 +55,7 @@
                     <RowDefinition Height="30*"/>
                 </Grid.RowDefinitions>
 
-                <DataGrid Grid.Column="0" Grid.Row="0" ItemsSource="{Binding ElementName=ComboBox_Activites, Path=SelectedItem.Competences}"/>
+                <DataGrid Grid.Column="0" Grid.Row="0" ItemsSource="{Binding ElementName=ComboBox_Activites, Path=SelectedItem.Competences}" Margin="0,-10,0,10"/>
 
                 <Grid Grid.Column="0" Grid.Row="2">
                     <Grid.ColumnDefinitions>
@@ -90,7 +90,7 @@
                     
                     <TextBox x:Name="TextBox_Acteurs"        Grid.Column="8" Grid.Row="2" VerticalAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding ElementName=ComboBox_Activites, Path=SelectedItem.Acteurs, Mode=TwoWay}" />
                     
-                    <ComboBox x:Name="ComboBox_Missions"     Grid.Column="10" Grid.Row="2" VerticalAlignment="Center" HorizontalContentAlignment="Center" SelectedItem="{Binding ElementName=ComboBox_Activites, Path=SelectedItem.Mission, Mode=TwoWay}">
+                    <ComboBox x:Name="ComboBox_Missions"     Grid.Column="10" Grid.Row="2" VerticalAlignment="Center" HorizontalContentAlignment="Center" SelectedItem="{Binding ElementName=ComboBox_Activites, Path=SelectedItem.Mission, Mode=TwoWay}" SelectionChanged="ComboBox_Missions_SelectionChanged">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Nom}"/>
